@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: a37d2a1b31f048f4c9c0ed3298ee8274
+timeCreated: 1511829952
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: King of Rome
+  fontNames:
+  - King of Rome
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

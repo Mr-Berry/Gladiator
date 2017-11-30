@@ -1,0 +1,211 @@
+fileFormatVersion: 2
+guid: 23a1742ae89fbc248ad86c86ca3268c2
+timeCreated: 1512022400
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Back
+    100002: Camera
+    100004: Cylinder
+    100006: Cylinder.001
+    100008: Fingers1.Left
+    100010: Fingers1.Right
+    100012: Fingers2.Left
+    100014: Fingers2.Left_end
+    100016: Fingers2.Right
+    100018: Fingers2.Right_end
+    100020: Foot.Left
+    100022: Foot.Right
+    100024: Forearm.Left
+    100026: Forearm.Right
+    100028: Hand.Left
+    100030: Hand.Right
+    100032: Head
+    100034: Head_end
+    100036: Hip
+    100038: HumanMale
+    100040: HumanMale_Materia
+    100042: HumanMale_Materia.001
+    100044: HumanMale_Materia.002
+    100046: HumanMale_Materia.003
+    100048: HumanMale_Material.00
+    100050: Lamp
+    100052: MaleArm
+    100054: Shin.Left
+    100056: Shin.Right
+    100058: Sphere
+    100060: Sphere.001
+    100062: Sphere.003
+    100064: Thigh.Left
+    100066: Thigh.Right
+    100068: Thumb1.Left
+    100070: Thumb1.Right
+    100072: Thumb2.Left
+    100074: Thumb2.Left_end
+    100076: Thumb2.Right
+    100078: Thumb2.Right_end
+    100080: Toes.Left
+    100082: Toes.Left_end
+    100084: Toes.Right
+    100086: Toes.Right_end
+    100088: Upperarm.Left
+    100090: Upperarm.Right
+    100092: //RootNode
+    400000: Back
+    400002: Camera
+    400004: Cylinder
+    400006: Cylinder.001
+    400008: Fingers1.Left
+    400010: Fingers1.Right
+    400012: Fingers2.Left
+    400014: Fingers2.Left_end
+    400016: Fingers2.Right
+    400018: Fingers2.Right_end
+    400020: Foot.Left
+    400022: Foot.Right
+    400024: Forearm.Left
+    400026: Forearm.Right
+    400028: Hand.Left
+    400030: Hand.Right
+    400032: Head
+    400034: Head_end
+    400036: Hip
+    400038: HumanMale
+    400040: HumanMale_Materia
+    400042: HumanMale_Materia.001
+    400044: HumanMale_Materia.002
+    400046: HumanMale_Materia.003
+    400048: HumanMale_Material.00
+    400050: Lamp
+    400052: MaleArm
+    400054: Shin.Left
+    400056: Shin.Right
+    400058: Sphere
+    400060: Sphere.001
+    400062: Sphere.003
+    400064: Thigh.Left
+    400066: Thigh.Right
+    400068: Thumb1.Left
+    400070: Thumb1.Right
+    400072: Thumb2.Left
+    400074: Thumb2.Left_end
+    400076: Thumb2.Right
+    400078: Thumb2.Right_end
+    400080: Toes.Left
+    400082: Toes.Left_end
+    400084: Toes.Right
+    400086: Toes.Right_end
+    400088: Upperarm.Left
+    400090: Upperarm.Right
+    400092: //RootNode
+    2000000: Camera
+    2300000: Cylinder
+    2300002: Cylinder.001
+    2300004: HumanMale_Materia
+    2300006: HumanMale_Materia.001
+    2300008: HumanMale_Materia.002
+    2300010: HumanMale_Materia.003
+    2300012: HumanMale_Material.00
+    2300014: Sphere
+    2300016: Sphere.001
+    2300018: Sphere.003
+    3300000: Cylinder
+    3300002: Cylinder.001
+    3300004: HumanMale_Materia
+    3300006: HumanMale_Materia.001
+    3300008: HumanMale_Materia.002
+    3300010: HumanMale_Materia.003
+    3300012: HumanMale_Material.00
+    3300014: Sphere
+    3300016: Sphere.001
+    3300018: Sphere.003
+    4300000: Sphere.003
+    4300002: HumanMale_Materia.003
+    4300004: HumanMale_Materia.002
+    4300006: HumanMale_Materia
+    4300008: Cylinder.001
+    4300010: HumanMale_Materia.001
+    4300012: HumanMale_Material.00
+    4300014: Sphere.001
+    4300016: Sphere
+    4300018: Cylinder
+    4300020: HumanMale
+    9500000: //RootNode
+    10800000: Lamp
+    13700000: HumanMale
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 5
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
