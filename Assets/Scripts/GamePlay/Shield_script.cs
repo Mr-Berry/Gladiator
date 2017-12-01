@@ -21,7 +21,6 @@ public class Shield_script : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter(Collider other) {
-		Debug.Log("shield Collision");
 		if (m_isPlayer) {
 			if (m_player.m_isBlocking) {
 				Weapon_script enemy = other.GetComponent<Weapon_script>();

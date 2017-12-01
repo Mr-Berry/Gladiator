@@ -49,7 +49,6 @@ public class PoolManager_script : MonoBehaviour {
 						m_grunts[j] = Instantiate(m_enemyClass[i].m_enemyPrefab);
 						m_grunts[j].GetComponent<EnemyMovement_script>().m_target = m_enemyTarget;
 						m_grunts[j].SetActive(false);
-						Debug.Log("spawned grunt");
 					break;
 					case (int)m_enemyTypes.WARRIOR:
 						m_warriors[j] = Instantiate(m_enemyClass[i].m_enemyPrefab);
@@ -127,11 +126,18 @@ public class PoolManager_script : MonoBehaviour {
 		}
 	}
 
+	public void ResetPlayer() {
+		PlayerController_script player = m_enemyTarget.GetComponent<PlayerController_script>();
+		player.ResetPosition();
+		player.m_gameStarted = false;
+	}
+
 	public void ActivateEnemies() {
 		for (int i = 0; i < m_waveEnemies.Count; i++) {
 			m_waveEnemies[i].GetComponent<EnemyMovement_script>().m_canMove = true;
 			m_waveEnemies[i].GetComponent<EnemyMovement_script>().m_canWalk = true;
-		}		
+		}
+		m_enemyTarget.GetComponent<PlayerController_script>().m_gameStarted = true;	
 	}
 
 	#endregion

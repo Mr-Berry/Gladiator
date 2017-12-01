@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
 	public static GameManager Instance { get{return m_instance;}}
 	public GameObject[] m_canvases;
 	public bool m_playMode;
+	public bool m_canExitToMenu = false;
 	public PoolManager_script m_pool;
 	public Transform m_waveTextObject;
 	public Text m_goldText;
@@ -25,16 +26,19 @@ public class GameManager : MonoBehaviour {
 	private Text[] m_waveTexts;
 	private int m_currentCanvas = 0;
 	private int m_currentWave = 0;
-	private int m_enemiesKilled;
+	private int m_bestWave = 0;
+	private int m_enemiesKilled = 0;
 	private static int m_playerGold = 0;
+	private int m_goldGained = 0;
 	#endregion
 
 	#region Standard Methods
 
 	void Awake () {
-		InitPlayerGold();
 		m_instance = this;
+		InitPlayerPrefs();
 		if (m_playMode) {
+			InitPlayerGold();
 			m_waveTexts = m_waveTextObject.GetComponentsInChildren<Text>();
 		}
 	}
@@ -44,6 +48,7 @@ public class GameManager : MonoBehaviour {
 			if (m_pool.m_waveEnemies.Count == 0) {
 				m_currentWave++;
 				m_pool.SetupEnemies(m_currentWave);
+				m_pool.ResetPlayer();
 				m_waveTexts[0].text = "Wave " + m_currentWave;
 				m_waveTexts[1].text = "Wave " + m_currentWave;
 				StartCoroutine(ShowWaveNumber());
@@ -59,7 +64,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void LoadMenu() {
-		SceneManager.LoadScene(0,LoadSceneMode.Single);
+		if (m_canExitToMenu) {
+			Time.timeScale = 1;
+			SceneManager.LoadScene(0,LoadSceneMode.Single);
+		}
 	}
 
 	public void QuitGame() {
@@ -111,7 +119,9 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void AddGold(int gold) {
+		m_goldGained += gold;
 		StartCoroutine(AddGoldSlowly(gold));
+		m_enemiesKilled++;
 	}
 
 	public void EndGame() {
@@ -137,6 +147,34 @@ public class GameManager : MonoBehaviour {
 		StartCoroutine(SetEndGameScreen());
 	}
 
+	private void SetEndGameStats() {
+		int i = 0;
+		while (i < m_postGameStatsTexts.Length) {
+			switch (i) {
+				case 0:
+					m_postGameStatsTexts[i].text = m_currentWave.ToString();
+				break;
+				case 1:
+					if (m_currentWave > m_bestWave) {
+						m_bestWave = m_currentWave;
+						PlayerPrefs.SetInt("BestWave",m_bestWave);
+					}
+					m_postGameStatsTexts[i].text = m_bestWave.ToString();
+				break;
+				case 2:
+					m_postGameStatsTexts[i].text = m_enemiesKilled.ToString();
+				break;
+				case 3:
+					m_postGameStatsTexts[i].text = m_goldGained.ToString();
+					PlayerPrefs.SetInt("Gold", m_playerGold);
+				break;
+				default:
+				break;
+			}
+			i++;
+		}
+	}
+
 	IEnumerator SetEndGameScreen() {
 		m_loseBG.gameObject.SetActive(true);
 		m_loseText.gameObject.SetActive(true);
@@ -151,11 +189,12 @@ public class GameManager : MonoBehaviour {
 			m_loseText.color = newColor;
 			yield return null;
 		}
+		SetEndGameStats();
 		StartCoroutine(ShowStats(0));
 	}
 
 	IEnumerator ShowStats(int i) {
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSecondsRealtime(1);
 		// play sound and show object
 		switch (i) {
 			case 0:
@@ -172,10 +211,24 @@ public class GameManager : MonoBehaviour {
 			break;
 			case 3:
 				m_postGameStats[i].SetActive(true);
+				StartCoroutine(ShowStats(4));
 			break;
 			default:
-				Debug.Log("coroutine failed to exit");
+				m_canExitToMenu = true;
 			break;
+		}
+	}
+
+	private void InitPlayerPrefs() {
+		if (PlayerPrefs.HasKey("BestWave")) {
+			m_bestWave = PlayerPrefs.GetInt("BestWave");
+		} else {
+			PlayerPrefs.SetInt("BestWave", m_bestWave);
+		}
+		if (PlayerPrefs.HasKey("Gold")) {
+			m_playerGold = PlayerPrefs.GetInt("Gold");
+		} else {
+			PlayerPrefs.SetInt("Gold", m_playerGold);
 		}
 	}
 

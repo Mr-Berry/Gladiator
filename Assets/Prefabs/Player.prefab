@@ -3402,7 +3402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Speed: 20
   m_canRotate: 1
-  m_canMove: 1
+  m_canMove: 0
   m_isAttacking: 0
   m_isBlocking: 0
   m_sensor: {fileID: 114313492666450630}

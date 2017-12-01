@@ -11,6 +11,7 @@ public class PlayerController_script : MonoBehaviour {
 	public bool m_canMove = true;
 	public bool m_isAttacking = false;
 	public bool m_isBlocking = false;
+	public bool m_gameStarted = false;
 	public TargetSensor_script m_sensor;
 	public Weapon_script[] m_weapons;
 	public GameObject[] m_shields;
@@ -28,6 +29,7 @@ public class PlayerController_script : MonoBehaviour {
 	#endregion
 
 	#region Internal Variables
+	private Transform m_origPos;
 	private float m_blockSpeed;
 	private float m_runSpeed;
 	private int m_currentWeapon = 0;
@@ -40,6 +42,8 @@ public class PlayerController_script : MonoBehaviour {
 	#region Standard Methods
 
 	private void Awake() {
+//		PlayerPrefs.DeleteAll();
+		m_origPos = transform;
 		m_char = GetComponent<CharacterController>();
 		m_animController = GetComponent<Animation_script>();
 		m_health = GetComponent<Health_script>();
@@ -51,7 +55,7 @@ public class PlayerController_script : MonoBehaviour {
 	}
 
 	private void Update() {
-		if (!m_health.m_isDead) {
+		if (!m_health.m_isDead && m_gameStarted) {
 			if (m_canRotate) {
 				RotateToFaceMouse();
 			}
@@ -131,11 +135,11 @@ public class PlayerController_script : MonoBehaviour {
 		for (int i = 0; i < m_weapons.Length; i++) {
 			m_weapons[i].gameObject.SetActive(false);
 		}
-		// if (PlayerPrefs.HasKey("Weapon")) {
-		// 	m_currentWeapon = PlayerPrefs.GetInt("Weapon");
-		// } else {
-		// 	PlayerPrefs.SetInt("Weapon",m_currentWeapon);
-		// }
+		if (PlayerPrefs.HasKey("Weapon")) {
+		 	m_currentWeapon = PlayerPrefs.GetInt("Weapon");
+		} else {
+		 	PlayerPrefs.SetInt("Weapon",m_currentWeapon);
+		}
 		m_weapons[m_currentWeapon].gameObject.SetActive(true);
 		m_weapon = m_weapons[m_currentWeapon];
 	}
@@ -144,25 +148,33 @@ public class PlayerController_script : MonoBehaviour {
 		for (int i = 0; i < m_shields.Length; i++) {
 			m_shields[i].SetActive(false);
 		}
-		// if (PlayerPrefs.HasKey("Shield")) {
-		// 	m_currentShield = PlayerPrefs.GetInt("Shield");
-		// } else {
-		// 	PlayerPrefs.SetInt("Shield",m_currentShield);
-		// }
-		m_shields[m_currentShield].SetActive(true);	
+		if (PlayerPrefs.HasKey("Shield")) {
+		 	m_currentShield = PlayerPrefs.GetInt("Shield");
+		} else {
+		 	PlayerPrefs.SetInt("Shield",m_currentShield);
+		}
+		m_shields[m_currentShield].SetActive(true);
+		m_health.m_shieldFactor -= m_currentShield*0.1f;
 	}
 
 	private void InitArmor() {
+		if (PlayerPrefs.HasKey("Armor")) {
+		 	m_currentArmor = PlayerPrefs.GetInt("Armor");
+		} else {
+		 	PlayerPrefs.SetInt("Armor",m_currentArmor);
+		}	
 		for (int i = 0; i < m_currentArmor; i++) {
 			for (int j = 0; j < m_armors[i].m_armorPieces.Length; j++) {
 				m_armors[i].m_armorPieces[j].SetActive(true);
 			}
 		}
-		// if (PlayerPrefs.HasKey("Shield")) {
-		// 	m_currentShield = PlayerPrefs.GetInt("Shield");
-		// } else {
-		// 	PlayerPrefs.SetInt("Shield",m_currentShield);
-		// }		
+		m_health.m_armorFactor -= m_currentArmor*0.1f;
+	}
+
+	public void ResetPosition() {
+		transform.position = m_origPos.position;
+		transform.rotation = m_origPos.rotation;
+		GetComponent<Animator>().Rebind();
 	}
 
 	#endregion
