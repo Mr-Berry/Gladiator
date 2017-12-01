@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
 	public static GameManager Instance { get{return m_instance;}}
 	public GameObject[] m_canvases;
 	public bool m_playMode;
+	public static int m_playerGold = 0;
 	public bool m_canExitToMenu = false;
 	public PoolManager_script m_pool;
 	public Transform m_waveTextObject;
@@ -28,7 +29,6 @@ public class GameManager : MonoBehaviour {
 	private int m_currentWave = 0;
 	private int m_bestWave = 0;
 	private int m_enemiesKilled = 0;
-	private static int m_playerGold = 0;
 	private int m_goldGained = 0;
 	#endregion
 

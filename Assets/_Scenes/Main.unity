@@ -10401,6 +10401,38 @@ Prefab:
       propertyPath: m_healthBarFill
       value: 
       objectReference: {fileID: 1838165845}
+    - target: {fileID: 1147749597510178, guid: 9e468a223b51e3e45a7ece690df7b2b8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086725784766330, guid: 9e468a223b51e3e45a7ece690df7b2b8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360564811832600, guid: 9e468a223b51e3e45a7ece690df7b2b8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626469156552962, guid: 9e468a223b51e3e45a7ece690df7b2b8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1461803999141852, guid: 9e468a223b51e3e45a7ece690df7b2b8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1798221470310884, guid: 9e468a223b51e3e45a7ece690df7b2b8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1431997512759048, guid: 9e468a223b51e3e45a7ece690df7b2b8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1714645980894392, guid: 9e468a223b51e3e45a7ece690df7b2b8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e468a223b51e3e45a7ece690df7b2b8, type: 2}
   m_IsPrefabParent: 0
