@@ -12,7 +12,6 @@ public class Animation_script : MonoBehaviour {
 	private int m_attackState;
 	private int m_attackState1;
 	private int m_attackState2;
-	private int m_deathState;
 	private int m_stunnedFrontState;
 	private int m_stunnedBackState;
 	private int m_attackCombo = 0;
@@ -31,7 +30,6 @@ public class Animation_script : MonoBehaviour {
 		m_attackState = Animator.StringToHash("AttackLayer.Attack");
 		m_attackState1 = Animator.StringToHash("AttackLayer.Attack1");
 		m_attackState2 = Animator.StringToHash("AttackLayer.Attack2");
-		m_deathState = Animator.StringToHash("BaseLayer.Death");	
 		m_stunnedFrontState = Animator.StringToHash("BaseLayer.StunnedFromFront");
 		m_stunnedBackState = Animator.StringToHash("BaseLayer.StunnedFromBack");	
 	}
@@ -102,7 +100,7 @@ public class Animation_script : MonoBehaviour {
 		}
 
 		public void SetDead() {
-			m_animController.SetBool("isDead", true);
+			m_animController.SetBool(m_deathHash, true);
 		}
 
 		public void SetStunnedFront() {

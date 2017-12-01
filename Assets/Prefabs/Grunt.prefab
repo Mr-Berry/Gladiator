@@ -866,7 +866,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4302047986761704}
   - component: {fileID: 95844466905315378}
-  - component: {fileID: 208264907284837130}
   - component: {fileID: 136004549279652734}
   - component: {fileID: 195923275909697422}
   - component: {fileID: 114517927527964562}
@@ -1584,7 +1583,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1584089746030258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 233.18913, y: 0, z: 219.23201}
+  m_LocalPosition: {x: -2.3260994, y: -3.8481903, z: 6.589919}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4213267441708766}
@@ -2470,8 +2469,8 @@ MonoBehaviour:
   m_sensor: {fileID: 114342706595895810}
   m_isAttacking: 0
   m_canRotate: 1
+  m_canWalk: 1
   m_canMove: 1
-  m_canMoveForward: 1
   m_isWalking: 1
   m_isStunned: 0
   m_isKnockedDown: 0
@@ -2488,8 +2487,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e349058e67662449cbdb3213cda642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_minDamage: 5
-  m_maxDamage: 10
+  m_minDamage: 15
+  m_maxDamage: 30
   m_isPlayerOwned: 0
   m_player: {fileID: 0}
   m_enemy: {fileID: 114517927527964562}
@@ -2938,7 +2937,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 8
   m_Acceleration: 8
   avoidancePriority: 99
   m_AngularSpeed: 120
@@ -2950,18 +2949,3 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!208 &208264907284837130
-NavMeshObstacle:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1584089746030258}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 0.2, y: 1, z: 0.2}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 1, z: 0}
-  m_TimeToStationary: 0.5

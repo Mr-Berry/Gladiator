@@ -36,7 +36,6 @@ public class PlayerController_script : MonoBehaviour {
 	private int m_currentShield = 0;
 	private int m_currentArmor = 0;
 	private bool m_comboAttack = false;
-	private CharacterController m_char;
 	#endregion
 
 	#region Standard Methods
@@ -44,7 +43,6 @@ public class PlayerController_script : MonoBehaviour {
 	private void Awake() {
 //		PlayerPrefs.DeleteAll();
 		m_origPos = transform;
-		m_char = GetComponent<CharacterController>();
 		m_animController = GetComponent<Animation_script>();
 		m_health = GetComponent<Health_script>();
 		m_runSpeed = m_Speed;
