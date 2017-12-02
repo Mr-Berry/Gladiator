@@ -6,11 +6,13 @@ public class Shield_script : MonoBehaviour {
 
 	#region External Variables
 	public PlayerController_script m_player;
+	public AudioClip[] m_blockingClips;
 	#endregion
 
 	#region Internal Variables
 	private bool m_isPlayer = false;
 	private const float SLOWTIMEDURATION = 0.1f;
+	private AudioSource m_audio;
 	#endregion
 
 	#region Standard Methods
@@ -18,6 +20,7 @@ public class Shield_script : MonoBehaviour {
 		if (m_player != null) {
 			m_isPlayer = true;
 		}
+		m_audio = GetComponent<AudioSource>();
 	}
 
 	private void OnTriggerEnter(Collider other) {
@@ -42,6 +45,8 @@ public class Shield_script : MonoBehaviour {
 
 	#region Custom Methods
 	IEnumerator SlowTime() {
+		m_audio.clip = m_blockingClips[Random.Range(0,m_blockingClips.Length)];
+		m_audio.Play();
 		Time.timeScale = 0.1f;
 		for (float t = 0; t < SLOWTIMEDURATION; t += Time.deltaTime) {
 			yield return null;

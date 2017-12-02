@@ -28,6 +28,7 @@ public class ShopManager_script : MonoBehaviour {
 		InitImages();
 		m_goldText.text = GameManager.m_playerGold.ToString();
 	}
+
 	#endregion
 
 	#region Custom Methods

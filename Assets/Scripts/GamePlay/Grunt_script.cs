@@ -6,16 +6,21 @@ public class Grunt_script : EnemyMovement_script {
 
 	#region External Variables
 	public Weapon_script m_weapon;
+	public AudioClip[] m_attackingClips;
+	public AudioClip[] m_deathClips;
 	#endregion
 
 	#region Internal Variables
 	private int m_gruntGold = 20;
+	private AudioSource m_audio;
+	private bool m_canPlayAttackAudio = true;
 	#endregion
 
 	#region Standard Methods
 
 	private void Start() {
 		m_goldValue = m_gruntGold;
+		m_audio = GetComponent<AudioSource>();
 	}
 
 	private void Update() {
@@ -23,18 +28,24 @@ public class Grunt_script : EnemyMovement_script {
 			HandleAnimations();
 			if (!m_isStunned && !m_isKnockedDown) {
 				CheckIfMoving();
-				Vector3 target = m_target.position;
-				target.y = transform.position.y;
-				if (m_canRotate) {
+				if (m_target != null) {
+					Vector3 target = m_target.position;
+					target.y = transform.position.y;
+					if (m_canRotate) {
 					LookAtTarget(target);
-				}
-				if (m_canMove) {
-					if (m_canWalk && !m_isAttacking) {
-						MoveToTarget(target);
 					}
-					if (!m_isWalking && m_sensor.m_hasTarget) {
-						m_animator.SetBool("isAttacking", true);
-						m_canWalk = false;
+					if (m_canMove) {
+						if (m_canWalk && !m_isAttacking) {
+							MoveToTarget(target);
+						}
+						if (!m_isWalking && m_sensor.m_hasTarget) {
+							if (m_canPlayAttackAudio) {
+								Invoke("PlayAttackAudio",0.5f);
+								m_canPlayAttackAudio = false;
+							}
+							m_animator.SetBool("isAttacking", true);
+							m_canWalk = false;
+						}
 					}
 				}
 			}
@@ -49,6 +60,11 @@ public class Grunt_script : EnemyMovement_script {
 		HandleStun(currentBaseLayerState);
 	}
 
+	public void PlayAttackAudio() {
+		m_audio.clip = m_attackingClips[Random.Range(0,m_attackingClips.Length)];
+		m_audio.Play();
+	}
+
 	private void HandleAttacking(AnimatorStateInfo State) {
 		if (State.fullPathHash == m_attackState) {
 			m_isAttacking = true;
@@ -60,6 +76,7 @@ public class Grunt_script : EnemyMovement_script {
 			m_isAttacking = false;
 			m_weapon.ResetTargets();
 			m_canWalk = true;
+			m_canPlayAttackAudio = true;
 		}		
 	}
 

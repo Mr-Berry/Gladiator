@@ -870,9 +870,10 @@ GameObject:
   - component: {fileID: 195923275909697422}
   - component: {fileID: 114517927527964562}
   - component: {fileID: 114599992061721464}
+  - component: {fileID: 82892598142495258}
   m_Layer: 10
   m_Name: Grunt
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1583,7 +1584,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1584089746030258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3260994, y: -3.8481903, z: 6.589919}
+  m_LocalPosition: {x: 319.61652, y: 0, z: 281.03726}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4213267441708766}
@@ -2333,7 +2334,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 6981dccdbd114a7011005aba44295342, type: 2}
+  - {fileID: 2100000, guid: 34151b885a4d44dc2b9c8469f4af04de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2365,7 +2366,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 5725a57442c7a414c94a67a88464d0ae, type: 2}
+  - {fileID: 2100000, guid: 4d396ea1a93a050449d996228e3e2123, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2410,6 +2411,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.38093874, y: 1.2004946, z: 1.2704865}
   m_Center: {x: 0.009741211, y: 0.88713676, z: 0.93321687}
+--- !u!82 &82892598142495258
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1584089746030258}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.3
+  m_Pitch: 0.4
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.8
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95844466905315378
 Animator:
   serializedVersion: 3
@@ -2476,6 +2557,13 @@ MonoBehaviour:
   m_isKnockedDown: 0
   m_isDead: 0
   m_weapon: {fileID: 114574745517254572}
+  m_attackingClips:
+  - {fileID: 8300000, guid: e55a9b46c40766a4d9ac76aa8997a3ff, type: 3}
+  - {fileID: 8300000, guid: 1a02330c3cdd142428aa47cdcf760029, type: 3}
+  - {fileID: 8300000, guid: 3a56b9014a631184dadda937c32ca2df, type: 3}
+  - {fileID: 8300000, guid: d6d7229cf29823e4794b9295907d8a41, type: 3}
+  - {fileID: 8300000, guid: 6504195e252637142a56dd537fab2503, type: 3}
+  m_deathClips: []
 --- !u!114 &114574745517254572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2511,6 +2599,10 @@ MonoBehaviour:
   m_isDead: 0
   m_healthBar: {fileID: 0}
   m_healthBarFill: {fileID: 0}
+  m_deathClips:
+  - {fileID: 8300000, guid: cfbb5e3f9216f5e4c8add3c9b026eb02, type: 3}
+  - {fileID: 8300000, guid: 8cc8c2eec9b0be145a95ddff818fa366, type: 3}
+  - {fileID: 8300000, guid: a29fc6d69571ff145bde71c60cc3876e, type: 3}
 --- !u!135 &135028951208492084
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -2937,8 +3029,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 8
-  m_Acceleration: 8
+  m_Speed: 10
+  m_Acceleration: 16
   avoidancePriority: 99
   m_AngularSpeed: 120
   m_StoppingDistance: 8

@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Audio;
 
 public class PlayerController_script : MonoBehaviour {
 
 	#region External Variables
 	public float m_Speed;
+	public bool m_canPlayAttackSound = true;
 	public bool m_canRotate = true;
 	public bool m_canMove = true;
 	public bool m_isAttacking = false;
 	public bool m_isBlocking = false;
 	public bool m_gameStarted = false;
+	public AudioClip[] m_attackingClips;
 	public TargetSensor_script m_sensor;
 	public Weapon_script[] m_weapons;
 	public GameObject[] m_shields;
@@ -36,6 +39,7 @@ public class PlayerController_script : MonoBehaviour {
 	private int m_currentShield = 0;
 	private int m_currentArmor = 0;
 	private bool m_comboAttack = false;
+	private AudioSource m_audio;
 	#endregion
 
 	#region Standard Methods
@@ -45,8 +49,9 @@ public class PlayerController_script : MonoBehaviour {
 		m_origPos = transform;
 		m_animController = GetComponent<Animation_script>();
 		m_health = GetComponent<Health_script>();
+		m_audio = GetComponent<AudioSource>();
 		m_runSpeed = m_Speed;
-		m_blockSpeed = m_Speed/2f;
+		m_blockSpeed = m_Speed/3f;
 		InitWeapon();
 		InitShield();
 		InitArmor();
@@ -108,6 +113,11 @@ public class PlayerController_script : MonoBehaviour {
 
 	private void AttackInput() {
 		if (Input.GetAxis("Attack") != 0 && !m_comboAttack) {
+			if (m_canPlayAttackSound) {
+				m_audio.clip = m_attackingClips[UnityEngine.Random.Range(0,m_attackingClips.Length)];
+				m_audio.Play();
+				m_canPlayAttackSound = false;
+			}
 			m_animController.SetAttacking();
 			m_isAttacking = true;
 			m_comboAttack = true;

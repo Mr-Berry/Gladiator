@@ -130,6 +130,9 @@ public abstract class EnemyMovement_script : MonoBehaviour {
 	}
 
 	IEnumerator ResetStun() {
+		for (float t = 0; t < m_stunResetTimer; t += Time.deltaTime) {
+			yield return null;
+		}		
 		m_canBeStunned = false;
 		for (float t = 0; t < m_stunResetTimer; t += Time.deltaTime) {
 			yield return null;

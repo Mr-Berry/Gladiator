@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour {
 	public Image m_loseBG;
 	public GameObject[] m_postGameStats;
 	public Text[] m_postGameStatsTexts;
+	public AudioClip m_MenuClip;
+	public AudioSource m_ShopClip;
+	public AudioSource m_GameClip;
+
 	#endregion
 
 	#region Internal Variables

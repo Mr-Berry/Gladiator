@@ -14,6 +14,7 @@ public class Health_script : MonoBehaviour {
 	public bool m_isDead = false;
 	public Slider m_healthBar;
 	public Image m_healthBarFill;
+	public AudioClip[] m_deathClips;
 	#endregion
 
 	#region  Internal Variables
@@ -21,10 +22,12 @@ public class Health_script : MonoBehaviour {
 	private Animation_script m_animation;
 	private PlayerController_script m_player;
 	private EnemyMovement_script m_enemy;
+	private AudioSource m_audio;
 	#endregion
 
 	#region Standard Methods
 	private void Awake() {
+		m_audio = GetComponent<AudioSource>();
 		if (m_isPlayer) {
 			m_animation = GetComponent<Animation_script>();
 			m_player = GetComponent<PlayerController_script>();
@@ -33,12 +36,13 @@ public class Health_script : MonoBehaviour {
 		}
 		m_currentHP = m_maxHP;
 		m_isDead = false;
-
 	}
 	#endregion
 
 	#region Custom Methods
 	private void Die() {
+		m_audio.clip = m_deathClips[Random.Range(0,m_deathClips.Length)];
+		m_audio.Play();
 		m_isDead = true;
 		if (m_isPlayer) {
 			m_animation.SetDead();

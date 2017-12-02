@@ -69,32 +69,7 @@ public class PoolManager_script : MonoBehaviour {
 	}
 
 	public void SetupEnemies(int waveNumber) {
-		switch(waveNumber) {
-			case 1:
-				AddEnemies(2,0,0);
-			break;
-			case 2:
-				AddEnemies(4,0,0);
-			break;
-			case 3:
-				AddEnemies(6,0,0);
-			break;
-			case 4:
-				AddEnemies(8,0,0);
-			break;
-			case 5:
-				AddEnemies(10,0,0);
-			break;
-			case 6:
-				AddEnemies(12,0,0);
-			break;
-			case 7:
-				AddEnemies(14,0,0);
-			break;
-			default:
-				Debug.Log("Unknown waveNumber");
-			break;
-		}	
+		AddEnemies(2*waveNumber,0,0);
 	}
 
 	private void GetSpawns() {

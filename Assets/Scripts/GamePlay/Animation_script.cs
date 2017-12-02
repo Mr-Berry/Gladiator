@@ -55,6 +55,9 @@ public class Animation_script : MonoBehaviour {
 					m_controller.m_weapon.ResetTargets();		
 				}
 			} else if (currentAttackLayerState.fullPathHash == m_attackState1) {
+				if (m_attackCombo == 1) {
+					m_controller.m_canPlayAttackSound = true;
+				}
 				m_attackCombo = 2;
 				if (m_incrementAttack) {
 					m_animController.SetInteger(m_attackingHash, 3);
@@ -62,14 +65,18 @@ public class Animation_script : MonoBehaviour {
 					m_controller.m_weapon.ResetTargets();				
 				}
 			} else if (currentAttackLayerState.fullPathHash == m_attackState2) {
-					m_attackCombo = 3;
-					m_animController.SetInteger(m_attackingHash, 0);
-					m_incrementAttack = false;
+				if (m_attackCombo == 2) {
+					m_controller.m_canPlayAttackSound = true;
+				}
+				m_attackCombo = 3;
+				m_animController.SetInteger(m_attackingHash, 0);
+				m_incrementAttack = false;
 			} else {
 				if (m_incrementAttack) {
 					m_animController.SetInteger(m_attackingHash, 1);
 					m_incrementAttack = false;	
 					m_controller.m_weapon.ResetTargets();
+					m_controller.m_canPlayAttackSound = true;
 				} else {
 					m_animController.SetInteger(m_attackingHash, 0);
 					m_controller.m_canRotate = true;
@@ -101,6 +108,7 @@ public class Animation_script : MonoBehaviour {
 
 		public void SetDead() {
 			m_animController.SetBool(m_deathHash, true);
+			m_controller.m_isBlocking = false;
 		}
 
 		public void SetStunnedFront() {
